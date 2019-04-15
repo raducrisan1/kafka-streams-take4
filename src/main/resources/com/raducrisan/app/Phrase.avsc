@@ -1,0 +1,8 @@
+{
+  "namespace": "com.raducrisan.app",
+  "type": "record",
+  "name": "Phrase",
+  "fields": [
+      {"name": "content", "type": "string"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+    "version" : 1,
+    "partitions": [
+        {
+            "topic": "streams-text-input-v4",
+            "partition": 0,
+            "replicas": [1,2,3]
+        }
+    ]    
+}

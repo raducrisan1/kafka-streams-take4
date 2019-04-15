@@ -1,0 +1,2 @@
+kafka-topics --zookeeper localhost:2181 --create --topic streams-text-input-v4 --partitions 3 --replication-factor 3 
+kafka-topics --zookeeper localhost:2181 --create --topic streams-text-output-v4 --partitions 3 --replication-factor 3 

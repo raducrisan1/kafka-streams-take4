@@ -1,0 +1,9 @@
+{
+    "namespace": "com.raducrisan.app",
+    "type": "record",
+    "name": "Key",
+    "fields": [
+        {"name": "ID", "type": "long"}
+    ]
+  }
+  
