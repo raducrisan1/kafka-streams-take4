@@ -58,7 +58,7 @@ public class RecordConsumerApp {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, Serdes.Integer().deserializer().getClass().getName());
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
-
+        
         _consumer = new KafkaConsumer<>(props);
         _consumer.subscribe(Collections.singletonList("streams-text-output-v4"));
     }

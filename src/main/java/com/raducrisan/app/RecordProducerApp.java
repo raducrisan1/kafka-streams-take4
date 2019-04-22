@@ -48,7 +48,7 @@ public class RecordProducerApp {
         Properties props = new Properties();
 
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka-1:9092,kafka-2:9093,kafka-3:9094");
-        props.put(ProducerConfig.CLIENT_ID_CONFIG, "count-uppercase-2");
+        props.put(ProducerConfig.CLIENT_ID_CONFIG, "count-uppercase-4");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
@@ -57,16 +57,16 @@ public class RecordProducerApp {
     }
 
     private static void addRecord(Long key, String content) throws InterruptedException {
-        ProducerRecord<Key, Phrase> record = new ProducerRecord<>("streams-text-input-v2", new Key(key),
+        ProducerRecord<Key, Phrase> record = new ProducerRecord<>("streams-text-input-v4", new Key(key),
                 new Phrase(content));
 
         try {
             RecordMetadata metadata = _producer.send(record).get();
             System.out.println("Record sent with key:" + key + ":" + content + " to partition " + metadata.partition());
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            _logger.error("could not send the message with key %d to the topic.", key);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            _logger.info("interrupted while tyring to send the message %d to the topic.", key);       
             throw e;
         }
     }
