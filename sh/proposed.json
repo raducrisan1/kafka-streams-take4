@@ -3,7 +3,7 @@
     "partitions": [{
         "topic": "streams-text-input-v4",
         "partition": 0,
-        "replicas": [1,2],
+        "replicas": [1,2,3],
         "log_dirs": ["any", "any"]
     }]
 }

@@ -1,0 +1,1 @@
+kafka-topics --zookeeper localhost:2181 --alter --topic streams-text-input-v4
