@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class RandomTextWriterSourceTask extends SourceTask {
 
-    private String _topic;
     private Logger _logger = LoggerFactory.getLogger(RandomTextWriterSourceTask.class);
+    private RandomTextWriterSourceConnectorConfig _config;
 
     @Override
     public String version() {
@@ -21,7 +21,7 @@ public class RandomTextWriterSourceTask extends SourceTask {
 
     @Override
     public void start(Map<String, String> props) {
-        _topic = props.get("TOPIC_NAME");
+        _config = new RandomTextWriterSourceConnectorConfig(props);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class RandomTextWriterSourceTask extends SourceTask {
         SourceRecord sr = new SourceRecord(
             sourcePartition,
             sourceOffset, 
-            _topic,
+            _config.getTopicName(),
             null,
             ConnectSchemas.KEY_SCHEMA,
             buildRecordKey(k),
@@ -43,7 +43,7 @@ public class RandomTextWriterSourceTask extends SourceTask {
             buildRecordValue(p), 
             k.getID());
         records.add(sr);
-        _logger.info("A record with ...");
+        _logger.info(String.format("A record with ID: %d has been added.", k.getID()));
         return records;
     }
 

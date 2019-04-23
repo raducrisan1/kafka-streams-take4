@@ -1,7 +1,6 @@
 package com.raducrisan.app;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ import org.apache.kafka.connect.source.SourceConnector;
 
 public class RandomTextWriterSourceConnector extends SourceConnector {
 
-    private String _topic;
+    private RandomTextWriterSourceConnectorConfig _config;
 
     @Override
     public String version() {
@@ -20,7 +19,7 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
 
     @Override
     public void start(Map<String, String> props) {
-        _topic = props.get("TOPIC_NAME");        
+        _config = new RandomTextWriterSourceConnectorConfig(props);                
     }
 
     @Override
@@ -30,12 +29,8 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
 
     @Override
     public List<Map<String, String>> taskConfigs(int maxTasks) {
-        ArrayList<Map<String, String>> configs = new ArrayList<>();
-        Map<String, String> config = new HashMap<>();
-        config.put("TOPIC_NAME", _topic);
-        configs.add(config);
-        configs.add(config);
-        configs.add(config);
+        ArrayList<Map<String, String>> configs = new ArrayList<>(1);
+        configs.add(_config.originalsStrings());        
         return configs;
     }
 
@@ -46,8 +41,6 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
 
     @Override
     public ConfigDef config() {
-        return null;
+        return RandomTextWriterSourceConnectorConfig.conf();       
     }
-
-    
 }
