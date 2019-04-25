@@ -28,10 +28,9 @@ public class UppercaseOccurrenceSinkTask extends SinkTask {
     @Override
     public void put(Collection<SinkRecord> records) {
         try {
-
             for(SinkRecord record: records) {
                 Struct key = (Struct) record.key();
-                _logger.info(key.toString());
+                _logger.info("Sink task: found a record: " + key.toString());
             }
         }
         catch(Exception ex) {

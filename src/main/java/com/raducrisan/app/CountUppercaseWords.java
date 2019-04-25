@@ -53,19 +53,25 @@ public class CountUppercaseWords {
         final Serde<Phrase> serdeValue = new SpecificAvroSerde<>();
         serdeValue.configure(serdeConfig, false);
 
+        final Serde<Word> serdeWord = new SpecificAvroSerde<>();
+        serdeWord.configure(serdeConfig, true);
+
+        final Serde<Count> serdeCount = new SpecificAvroSerde<>();
+        serdeCount.configure(serdeConfig, false);
+
         StreamsBuilder sb = new StreamsBuilder();
         final KStream<Key, Phrase> textLines = sb.stream(
             "streams-text-input-v4", 
             Consumed.with(serdeKey, serdeValue));
 
-        KTable<String, Integer> upperCaseCounts = textLines
+        KTable<Word, Count> upperCaseCounts = textLines
                 .flatMapValues(value -> Arrays.asList(splitPattern.split(value.getContent())))
                 .filter((k, v) -> upperCasePattern.matcher(v).matches())
-                .groupBy((k, v) -> v, Grouped.with(Serdes.String(), Serdes.String()))
+                .groupBy((k, v) -> new Word(v), Grouped.with(serdeWord, Serdes.String()))
                 .count()
-                .mapValues(v -> Math.toIntExact(v));
+                .mapValues(v -> new Count(Math.toIntExact(v)));
 
-        upperCaseCounts.toStream().to("streams-text-output-v4", Produced.with(Serdes.String(), Serdes.Integer()));
+        upperCaseCounts.toStream().to("streams-text-output-v4", Produced.with(serdeWord, serdeCount));
         _streams = new KafkaStreams(sb.build(), props);
     }
 

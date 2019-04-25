@@ -59,6 +59,8 @@
               <includes>
                 <include>Key.avsc</include>
                 <include>Phrase.avsc</include>
+                <include>Word.avsc</include>
+                <include>Count.avsc</include>
               </includes>
               <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
             </configuration>

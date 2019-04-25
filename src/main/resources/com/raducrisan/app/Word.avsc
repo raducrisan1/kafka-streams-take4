@@ -1,0 +1,9 @@
+{
+    "namespace": "com.raducrisan.app",
+    "type": "record",
+    "name": "Word",
+    "fields": [
+        {"name": "name", "type": "string"}
+    ]
+  }
+  
