@@ -30,7 +30,10 @@ public class UppercaseOccurrenceSinkTask extends SinkTask {
         try {
             for(SinkRecord record: records) {
                 Struct key = (Struct) record.key();
-                _logger.info("Sink task: found a record: " + key.toString());
+                Struct value = (Struct) record.value();
+                
+                _logger.info(String.format("Sink task: found a record. Key: %s, Value: %s", 
+                key.toString(), value.toString()));
             }
         }
         catch(Exception ex) {
