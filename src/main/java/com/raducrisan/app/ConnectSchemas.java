@@ -11,8 +11,8 @@ public class ConnectSchemas {
     public static final String CONTENT_FIELD = "content";
 
     // Schema names
-    public static final String SCHEMA_KEY = "com.raducrisan.app.TextKey";
-    public static final String SCHEMA_VALUE = "com.raducrisan.app.TextValue";
+    public static final String SCHEMA_KEY = "com.raducrisan.app.Key";
+    public static final String SCHEMA_VALUE = "com.raducrisan.app.Phrase";
 
     public static final Schema KEY_SCHEMA = SchemaBuilder.struct().name(SCHEMA_KEY).version(1)
             .field(ID_FIELD, Schema.INT64_SCHEMA).build();

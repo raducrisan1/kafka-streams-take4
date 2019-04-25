@@ -6,11 +6,11 @@ import java.util.Map;
 
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
-import org.apache.kafka.connect.source.SourceConnector;
+import org.apache.kafka.connect.sink.SinkConnector;
 
-public class RandomTextWriterSourceConnector extends SourceConnector {
+public class UppercaseOccurrenceSinkConnector extends SinkConnector {
 
-    private RandomTextWriterSourceConnectorConfig _config;
+    private UppercaseOccurrenceSinkConnectorConfig _config;
 
     @Override
     public String version() {
@@ -19,12 +19,12 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
 
     @Override
     public void start(Map<String, String> props) {
-        _config = new RandomTextWriterSourceConnectorConfig(props);                
+        _config = new UppercaseOccurrenceSinkConnectorConfig(props);
     }
 
     @Override
     public Class<? extends Task> taskClass() {
-        return RandomTextWriterSourceTask.class;
+        return UppercaseOccurrenceSinkTask.class;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
         ArrayList<Map<String, String>> configs = new ArrayList<>(1);
         for (int i = 0; i < maxTasks; i++) {
             configs.add(_config.originalsStrings());
-        }        
+        }
         return configs;
     }
 
@@ -43,6 +43,7 @@ public class RandomTextWriterSourceConnector extends SourceConnector {
 
     @Override
     public ConfigDef config() {
-        return RandomTextWriterSourceConnectorConfig.conf();       
+        return UppercaseOccurrenceSinkConnectorConfig.conf();
     }
+
 }

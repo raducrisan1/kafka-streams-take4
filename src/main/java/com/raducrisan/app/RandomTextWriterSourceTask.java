@@ -41,15 +41,16 @@ public class RandomTextWriterSourceTask extends SourceTask {
             buildRecordKey(k),
             ConnectSchemas.VALUE_SCHEMA,
             buildRecordValue(p), 
-            k.getID());
+            k.getId());
         records.add(sr);
-        _logger.info(String.format("A record with ID: %d has been added.", k.getID()));
+        _logger.info(String.format("A record with ID: %d has been added.", k.getId()));
+        Thread.sleep(1500);
         return records;
     }
 
     private Struct buildRecordKey(Key k) {
         Struct key = new Struct(ConnectSchemas.KEY_SCHEMA)
-        .put(ConnectSchemas.ID_FIELD, k.getID());
+        .put(ConnectSchemas.ID_FIELD, k.getId());
         return key;
     }
 

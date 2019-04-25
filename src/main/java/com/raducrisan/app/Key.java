@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Key extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6618817944864229195L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Key\",\"namespace\":\"com.raducrisan.app\",\"fields\":[{\"name\":\"ID\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = 1609634813176627568L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Key\",\"namespace\":\"com.raducrisan.app\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,7 +51,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
     return DECODER.decode(b);
   }
 
-  @Deprecated public long ID;
+  @Deprecated public long id;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -62,17 +62,17 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
 
   /**
    * All-args constructor.
-   * @param ID The new value for ID
+   * @param id The new value for id
    */
-  public Key(java.lang.Long ID) {
-    this.ID = ID;
+  public Key(java.lang.Long id) {
+    this.id = id;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return ID;
+    case 0: return id;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -81,25 +81,25 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: ID = (java.lang.Long)value$; break;
+    case 0: id = (java.lang.Long)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'ID' field.
-   * @return The value of the 'ID' field.
+   * Gets the value of the 'id' field.
+   * @return The value of the 'id' field.
    */
-  public java.lang.Long getID() {
-    return ID;
+  public java.lang.Long getId() {
+    return id;
   }
 
   /**
-   * Sets the value of the 'ID' field.
+   * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setID(java.lang.Long value) {
-    this.ID = value;
+  public void setId(java.lang.Long value) {
+    this.id = value;
   }
 
   /**
@@ -134,7 +134,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Key>
     implements org.apache.avro.data.RecordBuilder<Key> {
 
-    private long ID;
+    private long id;
 
     /** Creates a new Builder */
     private Builder() {
@@ -147,8 +147,8 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
      */
     private Builder(com.raducrisan.app.Key.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.ID)) {
-        this.ID = data().deepCopy(fields()[0].schema(), other.ID);
+      if (isValidValue(fields()[0], other.id)) {
+        this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
       }
     }
@@ -159,46 +159,46 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
      */
     private Builder(com.raducrisan.app.Key other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.ID)) {
-        this.ID = data().deepCopy(fields()[0].schema(), other.ID);
+      if (isValidValue(fields()[0], other.id)) {
+        this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
       }
     }
 
     /**
-      * Gets the value of the 'ID' field.
+      * Gets the value of the 'id' field.
       * @return The value.
       */
-    public java.lang.Long getID() {
-      return ID;
+    public java.lang.Long getId() {
+      return id;
     }
 
     /**
-      * Sets the value of the 'ID' field.
-      * @param value The value of 'ID'.
+      * Sets the value of the 'id' field.
+      * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.raducrisan.app.Key.Builder setID(long value) {
+    public com.raducrisan.app.Key.Builder setId(long value) {
       validate(fields()[0], value);
-      this.ID = value;
+      this.id = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'ID' field has been set.
-      * @return True if the 'ID' field has been set, false otherwise.
+      * Checks whether the 'id' field has been set.
+      * @return True if the 'id' field has been set, false otherwise.
       */
-    public boolean hasID() {
+    public boolean hasId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'ID' field.
+      * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.raducrisan.app.Key.Builder clearID() {
+    public com.raducrisan.app.Key.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -208,7 +208,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
     public Key build() {
       try {
         Key record = new Key();
-        record.ID = fieldSetFlags()[0] ? this.ID : (java.lang.Long) defaultValue(fields()[0]);
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

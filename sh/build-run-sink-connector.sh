@@ -4,8 +4,7 @@ export CLASSPATH=$(find target/ -type f -name '*.jar'| grep '\-with-dependencies
 mvn clean package
 # $CONFLUENT_HOME/bin/connect-standalone \
 #     $CONFLUENT_HOME/etc/schema-registry/connect-avro-standalone.properties \
-#     config/RandomTextWriterSourceConnector.properties
+#     config/UppercaseOccurrenceSinkConnector.properties
 $CONFLUENT_HOME/bin/connect-standalone \
-    config/worker-source-connector.properties \
-    config/RandomTextWriterSourceConnector.properties \
+    config/worker-sink-connector.properties \
     config/UppercaseOccurrenceSinkConnector.properties
