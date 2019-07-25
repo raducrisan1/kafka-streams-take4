@@ -31,21 +31,21 @@ public class CountUppercaseWords {
     }
 
     public static void initialize() {
-        String brokerList = "localhost:9092";
+        String brokerList = "dev-node01:9092";
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "count-uppercase-v4");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, SpecificAvroSerde.class.getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, SpecificAvroSerde.class.getName());
         props.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 2 * 1000);
-        props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+        props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://dev-node01:8081");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         final Pattern splitPattern = Pattern.compile("\\W+");
         final Pattern upperCasePattern = Pattern.compile("[A-Z]+");
 
         final Map<String, String> serdeConfig = Collections
-                .singletonMap(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+                .singletonMap(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://dev-node01:8081");
 
         final Serde<Key> serdeKey = new SpecificAvroSerde<>();
         serdeKey.configure(serdeConfig, true);

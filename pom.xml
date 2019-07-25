@@ -76,6 +76,8 @@
             <param>http://localhost:8081</param>
           </schemaRegistryUrls>
           <subjects>
+            <transactions-value>src/main/resources/com/raducrisan/app/Key.avsc</transactions-value>
+            <transactions-value>src/main/resources/com/raducrisan/app/Word.avsc</transactions-value>
             <transactions-value>src/main/resources/com/raducrisan/app/Phrase.avsc</transactions-value>
           </subjects>
         </configuration>

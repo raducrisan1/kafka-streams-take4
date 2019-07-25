@@ -32,6 +32,8 @@ public class UppercaseOccurrenceSinkTask extends SinkTask {
                 Struct key = (Struct) record.key();
                 Struct value = (Struct) record.value();
                 
+                
+
                 _logger.info(String.format("Sink task: found a record. Key: %s, Value: %s", 
                 key.toString(), value.toString()));
             }
